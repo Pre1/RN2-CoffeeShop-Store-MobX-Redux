@@ -38,4 +38,12 @@ var list = [
     lng: 47.9079404
   }
 ];
+
+// const mapStateToProps = state => {
+//   return {
+//     coffeeShops: state.rootCoffee.coffeeShops
+//   };
+// };
+// export default connect(mapStateToProps)(list);
+
 export default list;

@@ -3,9 +3,14 @@ import React, { Component } from "react";
 // NativeBase Components
 import { Text, Left, Body, Right, Button, ListItem, Icon } from "native-base";
 
+import { connect } from "react-redux";
+
+import * as actionCreators from "../../store/index";
+
 class CartItem extends Component {
   render() {
     const { item } = this.props;
+
     return (
       <ListItem style={{ borderBottomWidth: 0 }}>
         <Left>
@@ -27,4 +32,9 @@ class CartItem extends Component {
   }
 }
 
-export default CartItem;
+const mapStateToProps = state => {
+  return {
+    items: state.rootCart.items
+  };
+};
+export default connect(mapStateToProps)(CartItem);

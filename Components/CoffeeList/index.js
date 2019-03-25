@@ -9,9 +9,13 @@ import coffeeshops from "./list";
 // Component
 import CoffeeItem from "./CoffeeItem";
 
+import { connect } from "react-redux";
+
 class CoffeeList extends Component {
   render() {
     let shops;
+    let coffeeshops = this.props.list;
+    // let coffeeshops = coffeeshops;
     if (coffeeshops) {
       shops = coffeeshops.map(coffeeShop => (
         <CoffeeItem coffeeShop={coffeeShop} key={coffeeShop.id} />
@@ -25,4 +29,9 @@ class CoffeeList extends Component {
   }
 }
 
-export default CoffeeList;
+const mapStateToProps = state => {
+  return {
+    list: state.rootCoffee.coffeeShops
+  };
+};
+export default connect(mapStateToProps)(CoffeeList);

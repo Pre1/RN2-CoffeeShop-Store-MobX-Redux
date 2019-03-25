@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import { Spinner } from "native-base";
 import HomePage from "./Components/HomePage";
 
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+
+import store from "./store";
+import CoffeeList from "./Components/CoffeeList";
+
 export default class App extends Component {
   state = {
     loading: true
@@ -19,6 +25,10 @@ export default class App extends Component {
     if (this.state.loading) {
       return <Spinner color="white" />;
     }
-    return <HomePage />;
+    return (
+      <Provider store={store}>
+        <HomePage />
+      </Provider>
+    );
   }
 }
